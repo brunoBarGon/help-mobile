@@ -25,7 +25,7 @@ import {Header,
 
 
 
-const project = () => {
+const Project = () => {
     const [projects, setProjects] = useState([]);
     const [selectUser, setSelectUser] = useState();
     const [display, setDisplay] = useState('flex');
