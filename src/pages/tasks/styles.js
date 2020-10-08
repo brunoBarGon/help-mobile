@@ -25,6 +25,7 @@ export const TasksView = styled.View`
 export const TasksText = styled.Text`
     font-size: 16px;
     color: #3a3a3a;
+    max-width: 80%;
 
 `;
 

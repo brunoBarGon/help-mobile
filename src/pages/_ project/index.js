@@ -178,7 +178,7 @@ const Project = () => {
                             </Texto>
                             {users.map(user => {
                                 if (user.id === task.usuarioId) {
-                                    return <Text key={user.id}> {user.nome} </Text>
+                                    return <Texto key={user.id} style={{textAlign: 'center'}}> {user.nome} </Texto>
                                 }
                             })}
                             <Texto>

@@ -66,11 +66,14 @@ export const ButtonAdd = styled.TouchableOpacity`
 export const Expandir = styled.View`
     flex-direction: row;
     justify-content: space-between;
+    align-items:center;
 `;
 
 export const Texto = styled.Text`
     justify-content: space-between;
-    width: 200px;
+    width: 150px;
+    color: #fff;
+    max-width: 70%;
 `;
 
 export const Input = styled.TextInput`
