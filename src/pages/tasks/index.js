@@ -90,20 +90,20 @@ const tasks = ({navigation}) => {
                         {listTask.map(task => {
                             return (
                                 <TasksView key={task.id}>
-                                    <TasksText> {task.descricao}</TasksText>
+                                    <TasksText style={{color: "white"}} > {task.descricao}</TasksText>
                                     <Text> {task.concluido ? (
                                         <TasksIcons>
                                             <TasksButtons onPress={() => updateTasks(task)}>
-                                                <Feather name="check-circle" size={24} color="black" />
+                                                <Feather name="check-circle" size={24} color="white" />
                                             </TasksButtons>
                                             <TasksButtons onPress={() => deleteTasks(task)}>
-                                                <Feather name="delete" size={24} color="black" />
+                                                <Feather name="delete" size={24} color="white" />
                                             </TasksButtons>
 
                                         </TasksIcons>
                                     ) : (
                                             <TasksButtons onPress={() => updateTasks(task)}>
-                                                <Feather name="circle" size={24} color="black"  />
+                                                <Feather name="circle" size={24} color="white"  />
                                             </TasksButtons>
 
                                         )}

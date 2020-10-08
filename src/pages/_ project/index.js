@@ -14,10 +14,14 @@ import {Header,
         Expandir, 
         Texto,
         Input,
+        AccordionView,
         ButtonSignUp,
         ButtonSignUpText,
         ButtonView,
-        ButtonAdd} from './styles.js';
+        ButtonAdd,
+        ButtonDelProject,
+        Tela
+        } from './styles.js';
 
 
 
@@ -211,47 +215,48 @@ const project = () => {
     }
 
     return (
-        <>  
+        <Tela>  
             <Header>
                 <ViewLogout>
-                    <Feather name="arrow-left" size={28} color="#3b3b3b" onPress={() => signOut() } />
+                    <Feather name="arrow-left" size={28} color="white" onPress={() => signOut() } />
                     <LogoutText onPress={() => signOut() }> Logout </LogoutText>
                 </ViewLogout>
             </Header>
            
-            <Container >
+            <Container>
                 <ButtonView style={{ display: display }} onPress={() => buttonView()}>
-                    <ButtonTextHome> Visualiazar Projetos</ButtonTextHome>
+                    <ButtonTextHome> Visualizar Projetos</ButtonTextHome>
                 </ButtonView>
 
                 <ButtonAdd style={{ display: display }} onPress={() => buttonAdd()}>
-                    <ButtonTextHome> Criar Novo Projeto </ButtonTextHome>
+                    <ButtonTextHome> Criar Projeto </ButtonTextHome>
                 </ButtonAdd>
 
                 {selectUser === 'view' ? (
-                    <View>
+                    <AccordionView>
                         {projects.map((proj) => {
                             return (
                                 <Accordion
                                     key={proj.id}
                                     title={proj.descricao}
                                     content={validarTasks(proj)}
-                                    excluir={<TouchableOpacity onPress={() => Delete(proj)}>
-                                        <Text> Deletar</Text>
-                                    </TouchableOpacity>}
-                                    add={'Adicionar'}
+                                    excluir={<ButtonDelProject onPress={() => Delete(proj)}>
+                                        <Feather name="delete" size={24} color="white" />
+                                    </ButtonDelProject>}
+                                    add={<Feather name="plus-circle" size={24} color="white" />}
                                     input={InputTasks(proj)}
                                 />
                             )
                         })}
-                    </View>
+                    </AccordionView>
                 ) : (
                         <View>
                             {selectUser &&
                                 <View>
                                     <Input value={newProjects}
                                         onChangeText={text => setNewProjects(text)}
-                                        placeholder="Digite o nome projeto">
+                                        placeholder="Digite o nome projeto"
+                                        placeholderTextColor="white">
                                     </Input>
                                     <ButtonSignUp>
                                         <ButtonSignUpText onPress={() => addProjects()}> Cadastrar </ButtonSignUpText>
@@ -261,7 +266,7 @@ const project = () => {
                         </View>
                     )}
             </Container>
-        </>
+        </Tela>
     )
 };
 
