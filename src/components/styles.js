@@ -4,6 +4,7 @@ export const Expandir = styled.View`
     background-color: #ccc;
 `;
 
+
 export const ButtonProject= styled.TouchableOpacity`
     background-color: rgba(239, 80, 40, 131);
     justify-content: space-between;
@@ -20,6 +21,7 @@ export const TitleProject = styled.Text`
     font-size: 20px;
     color: #fff;
 `;
+
 
 export const ButtonAdd = styled.TouchableOpacity`
     margin-left: 15px;

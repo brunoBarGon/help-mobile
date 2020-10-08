@@ -37,26 +37,31 @@ const project = () => {
     const [selectedValue, setSelectedValue] = useState();
     const { signOut } = useAuth();
     const useFocused = useIsFocused();
+
+    //Função que obtêm da api todas os projetos.
     const loadProjects = async () => {
         try {
             const response = await api.get('projetos')
             setProjects(response.data)
         } catch (error) {
-
+            console.log("Erro ao carregar os projetos", error)
         }
-    }
+    };
 
+    //Função que obtêm o usuario logado no sistema .
     const loadUserAuth = async () => {
         try {
             const user = JSON.parse(await AsyncStorage.getItem('@HELP:user'));
             setUserAuth(user)
+        } catch (error) {
+            console.log("Erro ao carregar o usuario logado", error)
+        }finally{
             setSelectUser(null)
             setDisplay('flex')
-        } catch (error) {
-
         }
-    }
+    };
 
+    //Função que obtêm da api todos os usuarios
     const loadUser = async () => {
         try {
             const response = await api.get('usuarios')
@@ -64,8 +69,9 @@ const project = () => {
         } catch (error) {
             console.log(error, "Erro ao carregar os usuarios")
         }
-    }
-
+    };
+    
+    //Função que obtêm da api todos as tarefas
     const loadTasks = async () => {
         try {
             const response = await api.get('tarefas')
@@ -73,46 +79,50 @@ const project = () => {
         } catch (error) {
             console.log(error, "Erro ao carregar as tasks")
         }
-    }
+    };
 
     useEffect(() => {
         loadProjects();
         loadTasks();
         loadUser();
         loadUserAuth();
-    }, [])
+    }, []);
 
     useEffect(() => {
         loadUserAuth();
         loadTasks();
     }, [useFocused || false]);
-    function validarTasks(proj) {
-        return tasks.map(task => {
-            if (task.projetoId === proj.id) {
-                return <Expandir key={task.id} >
-                    <Texto >
-                        {task.descricao}
-                    </Texto>
-                    {users.map(user => {
-                        if (user.id === task.usuarioId) {
-                            return <Text key={user.id}> {user.nome} </Text>
-                        }
-                    })}
-                    <Texto>
-                        {task.concluido ? "Concluida" : "Pendente"}
-                    </Texto>
-                </Expandir>
-            }
-        })
+
+    //Função para cadastrar os projetos na API.
+    async function addProjects() {
+
+        if (!newProjects) return;
+        let project = projects[projects.length - 1];
+
+        const params = {
+            "descricao": newProjects,
+            "idUsuario": userAuth.id,
+            "id": project.id + 1
+        };
+
+        try {
+            await api.post(`projetos`, params)
+        } catch (error) {
+            console.log("eita carai", error)
+        }finally{
+            setNewProjects(null);
+            setSelectUser(null);
+            setDisplay('flex');
+            loadProjects();
+        }
     }
 
+    //Funcão para adicionar na API uma nova tarefas.
     async function addTasks(proj) {
 
-        if (!selectedValue || selectedValue === 0) {
-            return
-        }
-
-        let task = tasks[tasks.length - 1]
+        if (!selectedValue || selectedValue === 0) return;
+        if(!newTasks) ret
+        let task = tasks[tasks.length - 1];
 
         const params = {
             "descricao": newTasks,
@@ -120,58 +130,83 @@ const project = () => {
             "projetoId": proj.id,
             "usuarioId": selectedValue,
             "id": task.id + 1
-        }
+        };
 
         try {
             await api.post('tarefas', params)
+        } catch (error) {
+            console.log("Erro ao carregar a tarefa", error)
+        }finally{
             loadProjects();
             loadTasks();
             setNewTasks(null)
             setSelectedValue(null)
-        } catch (error) {
-            console.log("Erro ao carregar a tarefa", error)
         }
     }
 
-    async function addProjects() {
+    //Função para deletar da API o projetos e todas as tarefas vinculadas a esse projeto.
+    async function Delete(proj) {
 
-        if (!newProjects) return;
-
-        let project = projects[projects.length - 1];
-
-        const params = {
-            "descricao": newProjects,
-            "idUsuario": userAuth.id,
-            "id": project.id + 1
-        }
-
+        if (userAuth.id != proj.idUsuario) return;
         try {
-            await api.post(`projetos`, params)
-            setNewProjects(null);
-            setSelectUser(null);
-            setDisplay('flex');
-            loadProjects();
+            await api.delete(`projetos/${proj.id}`)
         } catch (error) {
-            console.log("eita carai", error)
+            console.log(error, "delete error")
         }
+        tasks.map(async (task) => {
+            if (task.projetoId === proj.id) {
+                try {
+                    await api.delete(`tarefas/${task.id}`)
+                } catch (error) {
+                    console.log(error, 'Erro ao deletar a tarefa')
+                }finally{
+                    loadProjects();
+                    loadTasks();
+                }
+            }
+        })
     }
 
 
+    //Função para listar todas as tarefas na tela do usuario.
+    function validarTasks(proj) {
+        return tasks.map(task => {
+            if (task.projetoId === proj.id) {
+                return <Expandir key={task.id} >
+                            <Texto >
+                                {task.descricao}
+                            </Texto>
+                            {users.map(user => {
+                                if (user.id === task.usuarioId) {
+                                    return <Text key={user.id}> {user.nome} </Text>
+                                }
+                            })}
+                            <Texto>
+                                {task.concluido ? "Concluida" : "Pendente"}
+                            </Texto>
+                        </Expandir>
+                    }
+                })
+            }
+
+    //Função que abre no acordeão uma view para cadastro das tarefas 
     function InputTasks(proj) {
         let teste = proj;
         return (
             <View>
-                <Input value={newTasks} onChangeText={text => setNewTasks(text)} placeholder="Digite o nome da tarefa">
+                <Input  value={newTasks} 
+                        onChangeText={text => setNewTasks(text)}   
+                        placeholder="Digite o nome da tarefa">
                 </Input>
                 <Picker
                     selectedValue={selectedValue}
                     onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
                     <Picker.Item label="Selecione um usuario" value={0} />
-                    {users.map(user => {
-                        return (
-                            <Picker.Item key={user.id} label={user.nome} value={user.id} />
-                        )
-                    })}
+                        {users.map(user => {
+                            return (
+                                <Picker.Item key={user.id} label={user.nome} value={user.id} />
+                            )
+                        })}
                 </Picker>
                 <TouchableOpacity>
                     <Text onPress={() => addTasks(teste)}> Cadastrar </Text>
@@ -180,38 +215,15 @@ const project = () => {
         )
     }
 
+    
     function buttonView() {
         setSelectUser('view')
         setDisplay('none')
     }
 
     function buttonAdd() {
-        setSelectUser('addd')
+        setSelectUser('add')
         setDisplay('none')
-    }
-
-    async function Delete(proj) {
-
-        if (userAuth.id != proj.idUsuario) return;
-
-        try {
-            await api.delete(`projetos/${proj.id}`)
-            loadProjects();
-            loadTasks();
-        } catch (error) {
-            console.log(error, "delete error")
-        }
-
-        tasks.map(async (task) => {
-            if (task.projetoId === proj.id) {
-                try {
-                    await api.delete(`tarefas/${task.id}`)
-                } catch (error) {
-                    console.log(error, 'Erro ao deletar a tarefa')
-                }
-            }
-        })
-
     }
 
     return (
@@ -270,4 +282,4 @@ const project = () => {
     )
 };
 
-export default project;
+export default Project;
