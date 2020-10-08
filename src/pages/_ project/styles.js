@@ -18,26 +18,34 @@ export const ViewLogout = styled.View`
 `;
 
 export const LogoutText = styled.Text`
-    color: #303030;
+    color: white;
     font-size: 16px;
     margin-bottom: 40%;
+`;
+
+export const Tela = styled.View`
+    flex: 1;
+    background-color: rgb(64,62,63);
+    padding: 10px;
 `;
 
 export const Container = styled.View`
     flex: 1;
     justify-content: center;
     align-items:center;
-    padding: 0 15px;
+    padding: 0 10px;
 `;
 
 export const ButtonView = styled.TouchableOpacity`
-    background-color: red;
+    background-color: rgba(239, 80, 40, 131);
+    border: 1px solid white;
     width: 220px;
     height: 50px;
     justify-content: center;
-    align-items:center;
-    border-radius: 50px;
-    margin-bottom: 40px; 
+    align-items: center;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    text-transform: uppercase; 
 `;
 
 export const ButtonTextHome = styled.Text`
@@ -46,12 +54,13 @@ export const ButtonTextHome = styled.Text`
 `;
 
 export const ButtonAdd = styled.TouchableOpacity`
-    background-color: green;
+    background-color: rgba(239, 80, 40, 131);
+    border: 1px solid white;
     width: 220px;
     height: 50px;
     justify-content: center;
     align-items:center;
-    border-radius: 50px;
+    border-radius: 8px;
 `;
 
 export const Expandir = styled.View`
@@ -65,20 +74,22 @@ export const Texto = styled.Text`
 `;
 
 export const Input = styled.TextInput`
-    background-color: #fff;
-    color: #303030;
+    background-color: rgb(64,62,63);
+    color: white;
+    border:1px solid rgba(239, 80, 40, 131);
     font-size: 18px; 
     width: 250px;
-    height: 40px;
+    height: 50px;
     padding: 0 10px;
     border-radius: 8px;
     margin-bottom: 10px;
 `;
 
 export const ButtonSignUp = styled.TouchableOpacity`
-    background-color: red;
+    background-color: rgba(239, 80, 40, 131);
+    border: 1px solid white;
     width: 250px;
-    height: 40px;
+    height: 50px;
     justify-content: center;
     align-items:center;
     border-radius: 8px;   
@@ -87,5 +98,14 @@ export const ButtonSignUp = styled.TouchableOpacity`
 export const ButtonSignUpText = styled.Text`
     color: #fff;
     font-size: 18px; 
+`;
+
+export const ButtonDelProject = styled.TouchableOpacity`
+    margin-right: 15px
+`;
+
+export const AccordionView = styled.View`
+    flex: 1;
+    padding: 20px;
 `;
 

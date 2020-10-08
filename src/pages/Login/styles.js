@@ -2,7 +2,6 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
     flex: 1;
-    background-color: #f0f0f5;
     padding: 20px;
     justify-content: center;
     align-items: center; 
@@ -28,9 +27,9 @@ export const Input = styled.TextInput`
 `;
 
 export const Button = styled.TouchableOpacity`
-    background-color: red;
+    background-color: rgba(239, 80, 40, 131);
     width: 250px;
-    height: 38px;
+    height: 50px;
     justify-content: center;
     align-items:center;
     border-radius: 8px;

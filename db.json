@@ -65,6 +65,11 @@
       "descricao": "Projeto React Native",
       "idUsuario": 1,
       "id": 2
+    },
+    {
+      "descricao": "Projeto do Nei",
+      "idUsuario": 1,
+      "id": 3
     }
   ],
   "tarefas": [
@@ -87,7 +92,7 @@
       "projetoId": 2,
       "usuarioId": 1,
       "id": 4,
-      "concluido": true
+      "concluido": false
     },
     {
       "descricao": "Teste",
