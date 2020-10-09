@@ -1,9 +1,8 @@
 
 import React, { useState, useRef, } from "react";
-import {Text, TouchableOpacity, View} from 'react-native';
-import {Expandir, TitleProject, ButtonProject, ButtonAdd, TaskView} from './styles';
+import {Text, View} from 'react-native';
+import {TitleProject, ButtonProject, ButtonAdd, TaskView, TaskUsers} from './styles';
 
-import api from '../services/api'
 
 function Accordion(props) {
   const [setActive, setActiveState] = useState("");
@@ -43,9 +42,9 @@ function Accordion(props) {
       <TaskView style={{display:setHeight}}> 
           {props.content}
       </TaskView>
-      <View style={{display:HeightInput}}> 
+      <TaskUsers style={{display:HeightInput}}> 
        {props.input}
-      </View>
+      </TaskUsers>
     </View>
   );
 }

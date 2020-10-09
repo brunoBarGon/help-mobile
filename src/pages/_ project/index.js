@@ -20,6 +20,8 @@ import {Header,
         ButtonView,
         ButtonAdd,
         ButtonDelProject,
+        SelectUser,
+        SignUserButton,
         Tela
         } from './styles.js';
 
@@ -173,7 +175,7 @@ const Project = () => {
         return tasks.map(task => {
             if (task.projetoId === proj.id) {
                 return <Expandir key={task.id} >
-                            <Texto >
+                            <Texto>
                                 {task.descricao}
                             </Texto>
                             {users.map(user => {
@@ -196,9 +198,10 @@ const Project = () => {
             <View>
                 <Input  value={newTasks} 
                         onChangeText={text => setNewTasks(text)}   
-                        placeholder="Digite o nome da tarefa">
+                        placeholder="Digite o nome da tarefa"
+                        placeholderTextColor="white">
                 </Input>
-                <Picker
+                <SelectUser
                     selectedValue={selectedValue}
                     onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
                     <Picker.Item label="Selecione um usuario" value={0} />
@@ -207,10 +210,10 @@ const Project = () => {
                                 <Picker.Item key={user.id} label={user.nome} value={user.id} />
                             )
                         })}
-                </Picker>
-                <TouchableOpacity>
-                    <Text onPress={() => addTasks(teste)}> Cadastrar </Text>
-                </TouchableOpacity>
+                </SelectUser>
+                <SignUserButton onPress={() => addTasks(teste)}>
+                    <Text style={{color:"white", fontWeight:"bold"}}> Cadastrar </Text>
+                </SignUserButton>
             </View>
         )
     }
