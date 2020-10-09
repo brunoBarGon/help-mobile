@@ -36,3 +36,7 @@ export const TasksIcons = styled.View`
 export const TasksButtons = styled.TouchableOpacity`
     padding: 5px;
 `;
+
+export const CompleteTasksText = styled.Span`
+    margin-top: 200px;
+`;

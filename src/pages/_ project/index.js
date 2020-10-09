@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Text, TouchableOpacity, View, Picker } from 'react-native';
+import { Text, TouchableOpacity, View} from 'react-native';
+import { Picker } from '@react-native-community/picker'
 import { useAuth } from '../../hooks/auth';
 import Accordion from "../../components/Accordion";
 import api from '../../services/api'
@@ -20,8 +21,9 @@ import {Header,
         ButtonView,
         ButtonAdd,
         ButtonDelProject,
-        SelectUser,
         SignUserButton,
+        SelectUserView,
+        PickerUser,
         Tela
         } from './styles.js';
 
@@ -201,16 +203,20 @@ const Project = () => {
                         placeholder="Digite o nome da tarefa"
                         placeholderTextColor="white">
                 </Input>
-                <SelectUser
-                    selectedValue={selectedValue}
-                    onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
-                    <Picker.Item label="Selecione um usuario" value={0} />
-                        {users.map(user => {
-                            return (
-                                <Picker.Item key={user.id} label={user.nome} value={user.id} />
-                            )
-                        })}
-                </SelectUser>
+                <SelectUserView>
+                    <PickerUser 
+                        style={{color:'white' ,backgroundColor: '#403E3F'}}
+                        selectedValue={selectedValue}
+                        onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>    
+                        <Picker.Item label="Selecione um usuario" value={0} />
+                            {users.map(user => {
+                                return (
+                                    <Picker.Item key={user.id} label={user.nome} value={user.id} />
+                                )
+                            })}
+                    </PickerUser>
+                    <Feather name="arrow-down" size={24} color="white" />
+                </SelectUserView>
                 <SignUserButton onPress={() => addTasks(teste)}>
                     <Text style={{color:"white", fontWeight:"bold"}}> Cadastrar </Text>
                 </SignUserButton>

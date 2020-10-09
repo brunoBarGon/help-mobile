@@ -10,7 +10,7 @@ const RootNavigator = ()  =>{
     
     return(
         <Stack.Navigator screenOptions={{
-            headerShown: false,       
+            headerShown: false     
         }}>
             <Stack.Screen name="Root" component={user ? AppRoutes : AuthRoutes } />
         </Stack.Navigator>

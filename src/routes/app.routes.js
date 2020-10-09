@@ -9,11 +9,17 @@ const Auth= createMaterialTopTabNavigator();
 
 const AppRoutes = () =>{
     return(
-        <Auth.Navigator
-            initialRouteName="Project">
 
-            <Auth.Screen name="Project" 
-                component={project} />
+        <Auth.Navigator 
+            initialRouteName="Project"
+            tabBarOptions={{
+                style: { backgroundColor: 'rgb(64,62,63)' },
+                labelStyle: { color: '#fff' },
+                indicatorStyle: { backgroundColor: 'rgba(239,80,40,131)'}   
+            }}
+        >
+             <Auth.Screen name="Project" 
+             component={project} />
 
             <Auth.Screen name="Tasks" 
                 component={Tasks} />
