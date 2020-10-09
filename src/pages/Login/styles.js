@@ -9,8 +9,8 @@ export const Container = styled.View`
 
 export const Logo = styled.Image`
     width: 230px;
-    height: 230px;
-    margin: 20px;
+    height: 200px;
+    
 `;
 
 export const Input = styled.TextInput`
@@ -24,6 +24,8 @@ export const Input = styled.TextInput`
     margin-top:10px;
     margin-bottom:10px;
     text-align:center;
+    
+    
 `;
 
 export const Button = styled.TouchableOpacity`

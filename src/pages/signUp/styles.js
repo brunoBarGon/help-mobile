@@ -8,6 +8,12 @@ export const Container = styled.View`
     flex:1;
 `;
 
+export const Logo = styled.Image`
+    width: 230px;
+    height: 200px;
+    
+`;
+
 export const Input = styled.TextInput`
     background-color: #fff;
     color: #303030;

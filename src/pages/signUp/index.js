@@ -3,7 +3,8 @@ import api from '../../services/api'
 import {Input,
         Container,
         ButtonInput,
-        ButtonInputText} from './styles';
+        ButtonInputText,
+        Logo} from './styles';
 
 const SignUp = ({ navigation: { goBack } }) =>{
         const [newName, setNewName] = useState();
@@ -48,6 +49,7 @@ const SignUp = ({ navigation: { goBack } }) =>{
 
     return(
         <Container>
+            <Logo source={{uri:"https://i.imgur.com/H9oAf6h.png"}} />
              <Input value={newName} onChangeText={text => setNewName(text)} placeholder="Digite seu nome" />
              <Input value={newEmail} onChangeText={text => setNewEmail(text)} placeholder="Digite seu email"/>
              <Input value={newPassword}  onChangeText={text => setNewPassword(text)} placeholder="Digite sua senha" secureTextEntry={true}/>
