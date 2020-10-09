@@ -116,10 +116,6 @@ export const AccordionView = styled.View`
     padding: 20px;
 `;
 
-export const SelectUser = styled.Picker`
-    color: white;
-`;
-
 export const SignUserButton = styled.TouchableOpacity`
     width:100px;
     height:50px;
@@ -128,4 +124,17 @@ export const SignUserButton = styled.TouchableOpacity`
     align-items: center;
     justify-content: center;
     background-color:rgba(239, 80, 40, 131);
+`;
+
+export const SelectUserView = styled.View`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 100%;
+    align-items: center;
+`;
+
+export const PickerUser = styled.Picker`
+    width: 320px;
+    margin-left: -8px;
 `;

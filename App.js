@@ -9,8 +9,8 @@ import RootNavigator from './src/routes'
 export default function App() {
   return (
       <SafeAreaProvider style={{paddingTop:24}}>     
-          <StatusBar style="dark" />
-          <NavigationContainer> 
+          <StatusBar style="light" backgroundColor='rgb(64,62,63)'/>
+          <NavigationContainer>
             < AppProvider>
               < RootNavigator/>
             </AppProvider>
