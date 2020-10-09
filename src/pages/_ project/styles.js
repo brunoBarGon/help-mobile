@@ -67,6 +67,10 @@ export const Expandir = styled.View`
     flex-direction: row;
     justify-content: space-between;
     align-items:center;
+    border: 1px solid white;
+    margin-bottom: 5px;
+    padding: 5px;
+    border-radius: 8px;
 `;
 
 export const Texto = styled.Text`
@@ -78,14 +82,14 @@ export const Texto = styled.Text`
 
 export const Input = styled.TextInput`
     background-color: rgb(64,62,63);
-    color: white;
     border:1px solid rgba(239, 80, 40, 131);
-    font-size: 18px; 
-    width: 250px;
+    font-size: 16px; 
+    width: 100%;
     height: 50px;
-    padding: 0 10px;
+    padding: 10px;
     border-radius: 8px;
     margin-bottom: 10px;
+    color: white;
 `;
 
 export const ButtonSignUp = styled.TouchableOpacity`
@@ -112,3 +116,16 @@ export const AccordionView = styled.View`
     padding: 20px;
 `;
 
+export const SelectUser = styled.Picker`
+    color: white;
+`;
+
+export const SignUserButton = styled.TouchableOpacity`
+    width:100px;
+    height:50px;
+    border-radius: 8px;
+    border: 1px solid white;
+    align-items: center;
+    justify-content: center;
+    background-color:rgba(239, 80, 40, 131);
+`;

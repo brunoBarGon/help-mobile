@@ -1,9 +1,5 @@
 import styled from 'styled-components/native';
 
-export const Expandir = styled.View`
-    background-color: #ccc;
-`;
-
 export const ButtonProject= styled.TouchableOpacity`
     background-color: rgba(239, 80, 40, 131);
     justify-content: space-between;
@@ -26,9 +22,16 @@ export const ButtonAdd = styled.TouchableOpacity`
 `;
 
 export const TaskView = styled.View`
-    width: 200px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    padding: 10px 20px 10px 20px;
+    max-width: 50%;
+    padding: 10px 3px 0 0;
+    align-items: center;
+    justify-content: center;
+`;
+
+export const TaskUsers = styled.View`
+    padding: 10px;
+
 `;
