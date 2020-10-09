@@ -80,7 +80,7 @@
       "projetoId": 1,
       "usuarioId": 3,
       "id": 7,
-      "concluido": false
+      "concluido": true
     },
     {
       "descricao": "Teste",
