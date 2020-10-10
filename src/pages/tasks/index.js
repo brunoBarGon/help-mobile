@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
-import { Container, TasksView, TasksIcons, TasksButtons, TasksText, Tasks, CompleteTasksText} from './styles';
+import { Container, TasksView, TasksIcons, TasksButtons, TasksText, Tasks, CompletedTasksText} from './styles';
 import api from '../../services/api';
 import { Feather } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -84,9 +84,9 @@ const tasks = ({navigation}) => {
     return (
         <Container>
             {listTask.length === 0 ? (
-                <CompleteTasksText>
+                <CompletedTasksText>
                     <Text style={{ color: 'white', fontSize: 30, fontWeight: 'bold'}}>Parabéns!{"\n"}Você não possui tarefas.</Text>
-                </CompleteTasksText>
+                </CompletedTasksText>
             ) : (
                     <Tasks>
                         {listTask.map(task => {

@@ -26,10 +26,10 @@ const Login = ({navigation}) =>{
             <Input placeholder = "Email" value={email} onChangeText={text => setEmail(text)}/> 
             <Input placeholder = "Senha" value={password} onChangeText={text => setPassword(text)} secureTextEntry={true}/> 
             <Button onPress={() => handleSubmit()}>
-                <ButtonText> Acessar </ButtonText>
+                <ButtonText style={{fontWeight: "bold"}}> Acessar </ButtonText>
             </Button>
             <Button onPress={() => navigation.navigate('SignUp')}>
-                <ButtonText> Cadastrar-se </ButtonText>
+                <ButtonText style={{fontWeight: "bold"}}> Cadastrar-se </ButtonText>
             </Button>
         </Container>
     )

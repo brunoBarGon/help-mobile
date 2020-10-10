@@ -200,7 +200,7 @@ const Project = () => {
             <View>
                 <Input  value={newTasks} 
                         onChangeText={text => setNewTasks(text)}   
-                        placeholder="Digite o nome da tarefa"
+                        placeholder="Digite a tarefa"
                         placeholderTextColor="white">
                 </Input>
                 <SelectUserView>
@@ -246,11 +246,11 @@ const Project = () => {
            
             <Container>
                 <ButtonView style={{ display: display }} onPress={() => buttonView()}>
-                    <ButtonTextHome> Visualizar Projetos</ButtonTextHome>
+                    <ButtonTextHome style={{fontWeight: "bold"}}> Visualizar Projetos</ButtonTextHome>
                 </ButtonView>
 
                 <ButtonAdd style={{ display: display }} onPress={() => buttonAdd()}>
-                    <ButtonTextHome> Criar Projeto </ButtonTextHome>
+                    <ButtonTextHome style={{fontWeight: "bold"}}> Criar Projeto </ButtonTextHome>
                 </ButtonAdd>
 
                 {selectUser === 'view' ? (
@@ -280,7 +280,7 @@ const Project = () => {
                                         placeholderTextColor="white">
                                     </Input>
                                     <ButtonSignUp>
-                                        <ButtonSignUpText onPress={() => addProjects()}> Cadastrar </ButtonSignUpText>
+                                        <ButtonSignUpText style={{fontWeight: "bold"}} onPress={() => addProjects()}> Cadastrar </ButtonSignUpText>
                                     </ButtonSignUp>
                                 </View>
                             }

@@ -4,7 +4,8 @@ export const Container = styled.View`
     flex: 1;
     padding: 20px;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
+    background-color: rgb(64,62,63);
 `;
 
 export const Logo = styled.Image`

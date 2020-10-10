@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import {Text, TextInput, View, TouchableOpacity} from 'react-native';
-import { ViewMessage, MessageText} from './styles'
+import { MessageView, MessageText, MessageSendView, MessageSendInput, MessagenSendButton } from './styles'
 
 import firebase from 'firebase';
 import 'firebase/firestore';
@@ -59,22 +59,23 @@ const Chat = () =>{
 
     return (
         <>  
-            <ViewMessage>
+            <MessageView>
                 {allMessage.map(mess =>{
                     return(
                     <MessageText key={mess.id}> {mess.message}</MessageText>
                     )
                 })}
-            </ViewMessage>
-            <View style={{justifyContent:"center", flex: 1, alignItems:"center"}}>
-                <TextInput  style={{width:200, backgroundColor:"red", color: "#fff"}} 
+            </MessageView>
+            <MessageSendView style={{justifyContent:"center", flex: 1, alignItems:"center"}}>
+                <MessageSendInput style={{color: "#fff"}} 
                             placeholder="Digite aqui"
+                            placeholderTextColor="white"
                             value={messageUser} onChangeText={text => setMessageUser(text)}> 
-                </TextInput>
-                <TouchableOpacity onPress={() => handleAddTask()}>
-                    <Text> Enviar </Text>
-                </TouchableOpacity>
-            </View>
+                </MessageSendInput >
+                <MessagenSendButton onPress={() => handleAddTask()}>
+                    <Text style={{color: "#fff", fontWeight:"bold"}}> Enviar </Text>
+                </MessagenSendButton>
+            </MessageSendView>
         </>
     )
 };
